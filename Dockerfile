@@ -18,7 +18,6 @@ RUN apk --no-cache add ca-certificates \
   && curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && mv terraform /usr/local/bin/terraform \
-  && mv kubectl /usr/local/bin/kubectl \
   && curl -LO https://github.com/johanhaleby/kubetail/archive/${KUBE_TAIL_VERSION}.zip \
   && unzip ${KUBE_TAIL_VERSION}.zip \
   && mv kubetail-${KUBE_TAIL_VERSION}/kubetail /usr/local/bin/kubetail \
