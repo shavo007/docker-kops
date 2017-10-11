@@ -4,15 +4,20 @@ Swiss army knife for k8s infra tools
 Includes
 * Kops
 * Kubectl
-* AWS cli
+* AWS CLI
 * Terraform
-* Kubetail
 
 
 ```bash
+(sample vars)
+export NAME=k8s.shanelee.name.k8s.local
+export KOPS_STATE_STORE=s3://shane-k8s-bucket
+export KUBECONFIG=~/stacks/${NAME}/kubeconfig
+export AWS_REGION=ap-southeast-2
 
 docker run --rm -it \
   -e AWS_REGION \
+  -e KUBECONFIG \
   -e AWS_PROFILE \
   -e KOPS_STATE_STORE \
   -v "$HOME"/.ssh:/root/.ssh:ro \

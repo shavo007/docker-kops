@@ -5,10 +5,10 @@ ENV KOPS_VERSION=1.7.0
 # latest stable kubectl: curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
 ENV KUBECTL_VERSION=v1.7.4
 ENV TERRAFORM_VERSION=0.10.7
-ENV KUBE_TAIL_VERSION=1.4.2
 
-RUN apk --no-cache add ca-certificates \
-  && apk --no-cache add --virtual build-dependencies curl python py-pip py-setuptools \
+RUN apk --no-cache update \
+  && apk --no-cache add ca-certificates \
+  && apk --no-cache add --virtual build-dependencies curl python py-pip py-setuptools groff less \
   && pip --no-cache-dir install awscli \
   && curl -LO --silent --show-error https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64 \
   && mv kops-linux-amd64 /usr/local/bin/kops \
@@ -17,12 +17,8 @@ RUN apk --no-cache add ca-certificates \
   && curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && mv terraform /usr/local/bin/terraform \
-  && curl -LO https://github.com/johanhaleby/kubetail/archive/${KUBE_TAIL_VERSION}.zip \
-  && unzip ${KUBE_TAIL_VERSION}.zip \
-  && mv kubetail-${KUBE_TAIL_VERSION}/kubetail /usr/local/bin/kubetail \
-  && chmod +x /usr/local/bin/kops /usr/local/bin/kubectl /usr/local/bin/terraform /usr/local/bin/kubetail  \
+  && chmod +x /usr/local/bin/kops /usr/local/bin/kubectl /usr/local/bin/terraform  \
   && apk del --purge build-dependencies \
-  && rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
-  && rm -rf ${KUBE_TAIL_VERSION}.zip
+  && rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 CMD ["/bin/sh"]
