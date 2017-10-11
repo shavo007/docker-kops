@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV KOPS_VERSION=1.7.0
+ENV KOPS_VERSION=1.7.1
 # https://kubernetes.io/docs/tasks/kubectl/install/
 # latest stable kubectl: curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
 ENV KUBECTL_VERSION=v1.7.4
