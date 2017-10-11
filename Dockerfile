@@ -10,7 +10,6 @@ ENV KUBE_TAIL_VERSION=1.4.2
 RUN apk --no-cache add ca-certificates \
   && apk --no-cache add --virtual build-dependencies curl python py-pip py-setuptools \
   && pip --no-cache-dir install awscli \
-  && echo "hello shane" \
   && curl -LO --silent --show-error https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64 \
   && mv kops-linux-amd64 /usr/local/bin/kops \
   && curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
@@ -26,5 +25,4 @@ RUN apk --no-cache add ca-certificates \
   && rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && rm -rf ${KUBE_TAIL_VERSION}.zip
 
-ENTRYPOINT ["/usr/local/bin/kops"]
-CMD ["--help"]
+CMD ["/bin/sh"]
