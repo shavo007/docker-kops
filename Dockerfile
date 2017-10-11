@@ -4,7 +4,7 @@ ENV KOPS_VERSION=1.7.0
 # https://kubernetes.io/docs/tasks/kubectl/install/
 # latest stable kubectl: curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
 ENV KUBECTL_VERSION=v1.7.4
-ENV TERRAFORM_VERSION=0.10.0
+ENV TERRAFORM_VERSION=0.10.7
 ENV KUBE_TAIL_VERSION=1.4.2
 
 RUN apk --no-cache add ca-certificates \
