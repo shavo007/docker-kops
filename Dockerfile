@@ -7,8 +7,8 @@ ENV KUBECTL_VERSION=v1.7.4
 ENV TERRAFORM_VERSION=0.10.7
 
 RUN apk --no-cache update \
-  && apk --no-cache add ca-certificates \
-  && apk --no-cache add --virtual build-dependencies curl python py-pip py-setuptools groff less \
+  && apk --no-cache add ca-certificates python py-pip py-setuptools groff less \
+  && apk --no-cache add --virtual build-dependencies curl \
   && pip --no-cache-dir install awscli \
   && curl -LO --silent --show-error https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64 \
   && mv kops-linux-amd64 /usr/local/bin/kops \
