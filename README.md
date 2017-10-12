@@ -1,7 +1,11 @@
 # docker-kops
 Swiss army knife for k8s infra tools
 
-Includes
+## Kubernetes Operations (kops)
+
+> Production Grade K8s Installation, Upgrades, and Management
+
+## Includes
 * Kops
 * Kubectl
 * AWS CLI
